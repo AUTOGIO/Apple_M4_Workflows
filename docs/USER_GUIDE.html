@@ -665,7 +665,7 @@
 
     <div class="ops-topology" id="ops-tabs">
       <div class="ops-tab active" data-tab="1" onclick="selectOpsTab(1)"><div class="tab-num">Tab 1</div><div class="tab-name">Backend</div><div class="tab-panes">Orchestration · Telemetry</div></div>
-      <div class="ops-tab" data-tab="2" onclick="selectOpsTab(2)"><div class="tab-num">Tab 2</div><div class="tab-name">AI / Ollama</div><div class="tab-panes">Model ops · Eval</div></div>
+      <div class="ops-tab" data-tab="2" onclick="selectOpsTab(2)"><div class="tab-num">Tab 2</div><div class="tab-name">AI (optional)</div><div class="tab-panes">Model ops · Eval</div></div>
       <div class="ops-tab" data-tab="3" onclick="selectOpsTab(3)"><div class="tab-num">Tab 3</div><div class="tab-name">Data</div><div class="tab-panes">SwiftData · Redis N/A</div></div>
       <div class="ops-tab" data-tab="4" onclick="selectOpsTab(4)"><div class="tab-num">Tab 4</div><div class="tab-name">Automation</div><div class="tab-panes">Workers · Queue health</div></div>
       <div class="ops-tab" data-tab="5" onclick="selectOpsTab(5)"><div class="tab-num">Tab 5</div><div class="tab-name">Git / Deploy</div><div class="tab-panes">Status · Logs</div></div>
@@ -752,7 +752,7 @@ require('modules.guide').open()</pre>
 <script>
   const OPS_DETAILS = {
     1: 'Tab 1 — Backend: Left runs ./launch.sh release. Right streams com.personal.blackdragon logs.',
-    2: 'Tab 2 — AI: Left runs ollama serve. Right runs ./launch.sh test (eval suite).',
+    2: 'Tab 2 — AI (optional / host): Left may run ollama serve if installed. Right runs ./launch.sh test (eval suite). Local models are not this repo’s product direction.',
     3: 'Tab 3 — Data: Left inspects SwiftData store. Right notes Redis N/A for BlackDragon.',
     4: 'Tab 4 — Automation: Left streams sync category logs. Right watches notebooklm + github pollers.',
     5: 'Tab 5 — Git: Left runs ./launch.sh build-rel. Right shows git log or commit stream.'

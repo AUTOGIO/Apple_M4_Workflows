@@ -14,11 +14,14 @@ Personal hub for custom macOS / Apple M4 automation: Shortcuts-oriented workflow
 | `docs/apple_m4_ecosystem.html` | **Ideas / backlog** (50 cards) — not an inventory of shipped workflows |
 | CLI design spec | **Deferred** — see `docs/superpowers/specs/2026-07-19-m4-workflows-cli-design.md` |
 
-Canonical purpose: a personal automation **hub and backlog**. Live Hammerspoon behavior lives under `~/.hammerspoon` on the Mac, not in this tree.
+Canonical purpose: a personal automation **hub and backlog**. Live Hammerspoon behavior lives under `~/.hammerspoon` on the Mac, not in this tree. See `docs/HAMMERSPOON.md`.
+
+Folder name: `Apple_M4_Workflows` (docs-only status; CLI deferred — not “not started” as incomplete product ambiguity).
 
 ## Where things live
 
 - **`docs/`** — Guides and dashboards. Open `docs/apple_m4_ecosystem.html` for the idea catalog; see also `docs/USER_GUIDE.html` (Hammerspoon prerequisites).
+- **`docs/external-links.md`** — Pointers to archived clippings and deferred design.
 - **`scripts/`** — Shell, AppleScript, Hammerspoon, and similar helpers (add as you build them).
 - **`config/`** — Non-secret settings (terminals, Spencer Pro / monitor layouts, prompts that are not secrets).
 - **`archive/`** — Obsolete or third-party clippings kept for reference.
