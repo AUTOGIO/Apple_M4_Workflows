@@ -17,7 +17,7 @@ Personal Mac automation hub (Shortcuts, scripts, layouts, local tool config). Pr
 | `assets/` | Images, icons, logos (create when needed) |
 | `tests/` | Tests only (create when needed) |
 | `archive/` | Obsolete files kept for reference — do not delete lightly |
-| Root | Only `README.md`, `AGENTS.md`, `.gitignore`, and toolchain files |
+| Root | Only `README.md`, `AGENTS.md`, `.gitignore`, workspace/toolchain files |
 
 Do not invent new top-level folders. Use `src/` or `app/` only if application code appears (not both). If the deferred CLI is started, allow `src/`, `bin/`, `tests/`, and `.github/` as in the design spec; keep Spencer layouts under `config/layouts/` (not top-level `layouts/`).
 

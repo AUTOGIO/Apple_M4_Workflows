@@ -8,7 +8,7 @@
 
 ## 1. Problem
 
-The repo today is documentation plus empty `scripts/`, `layouts/`, and `config/` folders. Workflow ideas assume local LLMs (Ollama/LM Studio). The user wants:
+The repo today is documentation plus empty `scripts/` and `config/` placeholders (`config/layouts/` reserved for Spencer stubs). Workflow ideas assume local LLMs (Ollama/LM Studio). The user wants:
 
 - Cloud API LLMs only (no local model runtime required)
 - Practices aligned with strong eng teams: one CLI, config as code, tests, CI, clear docs

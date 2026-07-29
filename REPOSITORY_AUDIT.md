@@ -1,6 +1,6 @@
 # Repository Audit Report
 
-> **Remediation applied 2026-07-29:** Stages 0–4 complete for docs-only scope (identity, CLI deferred, ecosystem ideas, USER_GUIDE prerequisites, MCP archived, Notes SQLite fixed, fadeIn, `.gitignore` LF, Git baseline, Hammerspoon symlink, folder rename to `Apple_M4_Workflows`). See `docs/UPGRADE_REPORT.md`. Full CLI / Vitest / CI still deferred. Findings below remain the historical audit record.
+> **Remediation applied 2026-07-29 (final):** Stages 0–4 complete for docs-only scope. Remaining gaps closed: `config/layouts/` placeholder, CLI spec problem text aligned with `config/layouts/`, audit §28 questions answered, workspace file present. CLI / Vitest / CI / `.env.example` still deferred by design. See `docs/UPGRADE_REPORT.md`. Findings below remain the historical audit record.
 
 ## 1. Executive Summary
 
@@ -649,14 +649,14 @@ Missing: recovery/backup procedures (N/A today), contribution guide, env example
 - Keychain-backed secrets (spec: out of v1).
 - Local Ollama providers (explicitly non-goal in approved CLI direction).
 
-## 28. Unresolved Questions
+## 28. Unresolved Questions — resolved 2026-07-29
 
-1. Does `(NOT _START )` override the “Approved” CLI spec until the user explicitly starts implementation?
-2. Should BlackDragon / Hammerspoon documentation leave this repository entirely?
-3. Will the eventual CLI live here (`@local/m4-workflows`) or in a new GitHub remote?
-4. Is the 50-card catalog still desired after rejecting local LLMs as first-class?
-5. Should empty `scripts/` / `config/` remain as placeholders or be omitted until needed?
+1. **`(NOT _START )` vs Approved CLI?** Folder renamed to `Apple_M4_Workflows`. CLI status is **Deferred** until an explicit start decision — docs-only wins until then.
+2. **BlackDragon / Hammerspoon leave this repo?** **No** — kept as companion guide with prerequisites; live Lua stays in `~/.hammerspoon` (see `docs/HAMMERSPOON.md`).
+3. **Where does the CLI live?** Remains **this** repo’s deferred design (`origin` = `AUTOGIO/Apple_M4_Workflows`); no separate remote chosen yet.
+4. **Keep the 50-card catalog?** **Yes** — as **ideas / stubs**, not shipped inventory; local-LLM cards are optional personal backlog only.
+5. **Empty `scripts/` / `config/`?** **Keep** as placeholders (`.gitkeep`); `config/layouts/` reserved for Spencer stubs.
 
 ## 29. Final Recommendation
 
-Treat this repository as a **docs and design backlog**, not a product binary. Stabilize identity and version control first. Do **not** begin a large CLI rewrite until Stage 0–1 decisions are explicit. The highest-value next action is: **declare one canonical purpose in README, initialize Git, and either defer the CLI spec or implement only phase-1 scaffold with tests** — leaving Hammerspoon/BlackDragon and the 50-idea catalog clearly marked as external or aspirational.
+**Done for docs-only scope.** This repository is a **docs and design backlog** with Git on `main`, a single README identity, deferred CLI, and clearly labeled Hammerspoon / idea-catalog surfaces. Do **not** begin the TypeScript CLI, Vitest, or CI until the user explicitly leaves “Deferred.” Next optional work: add real helpers under `scripts/` / `config/`, or start CLI phase 1 only.

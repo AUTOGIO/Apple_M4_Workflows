@@ -23,8 +23,9 @@ Folder name: `Apple_M4_Workflows` (docs-only status; CLI deferred — not “not
 - **`docs/`** — Guides and dashboards. Open `docs/apple_m4_ecosystem.html` for the idea catalog; see also `docs/USER_GUIDE.html` (Hammerspoon prerequisites).
 - **`docs/external-links.md`** — Pointers to archived clippings and deferred design.
 - **`scripts/`** — Shell, AppleScript, Hammerspoon, and similar helpers (add as you build them).
-- **`config/`** — Non-secret settings (terminals, Spencer Pro / monitor layouts, prompts that are not secrets).
+- **`config/`** — Non-secret settings (terminals, Spencer Pro / monitor layouts under `config/layouts/`, prompts that are not secrets).
 - **`archive/`** — Obsolete or third-party clippings kept for reference.
+- **`Apple_M4_Workflows.code-workspace`** — VS Code / Cursor multi-root workspace (single folder).
 
 ## How to run
 
