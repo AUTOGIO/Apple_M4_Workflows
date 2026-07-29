@@ -1,6 +1,6 @@
 # Repository Audit Report
 
-> **Remediation applied 2026-07-29:** Stage 0–4 quick wins executed (docs-only identity, CLI deferred, ecosystem relabeled, USER_GUIDE prerequisites, MCP clip archived, Notes SQLite guidance fixed, fadeIn keyframes, `.gitignore` LF, Git baseline). Full CLI / CI / parent-folder rename intentionally not started. Findings below remain the historical audit record.
+> **Remediation applied 2026-07-29:** Stages 0–4 complete for docs-only scope (identity, CLI deferred, ecosystem ideas, USER_GUIDE prerequisites, MCP archived, Notes SQLite fixed, fadeIn, `.gitignore` LF, Git baseline, Hammerspoon symlink, folder rename to `Apple_M4_Workflows`). See `docs/UPGRADE_REPORT.md`. Full CLI / Vitest / CI still deferred. Findings below remain the historical audit record.
 
 ## 1. Executive Summary
 
