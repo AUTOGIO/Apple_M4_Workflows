@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple M4 Ecosystem: 50 Workflow Ideas (Backlog)</title>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --surface-color: #1a1d24;
+            --primary-color: #007aff;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-green: #34c759;
+            --accent-purple: #af52de;
+            --accent-orange: #ff9500;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #007aff, #af52de);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card[data-category="ai"]::before { background: var(--accent-purple); }
+        .card[data-category="workspace"]::before { background: var(--accent-green); }
+        .card[data-category="terminal"]::before { background: var(--primary-color); }
+        .card[data-category="apple"]::before { background: var(--accent-orange); }
+
+        .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .card h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .status-banner {
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            padding: 0.85rem 1.25rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 149, 0, 0.35);
+            background: rgba(255, 149, 0, 0.08);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .status-banner strong { color: var(--accent-orange); }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 149, 0, 0.15);
+            color: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>M4 Ecosystem Ideas</h1>
+        <p>50 workflow <strong>ideas / backlog</strong> for macOS on Apple Silicon M4 — not shipped automations in this repo.</p>
+    </div>
+
+    <p class="status-banner"><strong>Status: idea · stub.</strong> No scripts or configs in this repository implement these cards. Local-LLM ideas are optional backlog; a cloud-API CLI design exists but is deferred.</p>
+
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Ideas</button>
+        <button class="filter-btn" data-filter="ai">AI Ideas (optional / local)</button>
+        <button class="filter-btn" data-filter="workspace">Spencer Pro & Workspace</button>
+        <button class="filter-btn" data-filter="terminal">Terminal & Dev (Ghostty/iTerm2)</button>
+        <button class="filter-btn" data-filter="apple">Apple Ecosystem</button>
+    </div>
+
+    <div class="grid" id="grid">
+        <!-- AI Category -->
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>1. Ultra-fast Local Inferencing</h3>
+            <p>Run 8B parameter Llama 3 models via Ollama utilizing your M4's 8-core GPU and Metal 4 for zero-latency brainstorming.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>2. LM Studio Model Testing</h3>
+            <p>Use LM Studio to hot-swap and test quantized CoreML-optimized models directly from your iCloud Drive directory.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>3. Local Voice Transcription</h3>
+            <p>Transcribe personal voice memos instantly using Whisper running locally via Ollama without sending data to the cloud.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>4. Raycast AI Integration</h3>
+            <p>Create a custom Raycast extension to query your local LM Studio models for quick questions anywhere on your Mac.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>5. Offline Code Review</h3>
+            <p>Pipe code from Ghostty into a local Ollama model to get syntax checks and refactoring suggestions completely offline.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>6. Automated Meeting Notes</h3>
+            <p>Feed text files to LM Studio via CLI to automatically generate executive summaries stored directly in Apple Notes.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>7. Atlas Research Aggregation</h3>
+            <p>Use ChatGPT Atlas to aggregate technical documentation (like ghostty.org) and output structured markdown.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>8. Comet Search Assistant</h3>
+            <p>Set Perplexity (Comet) as your default deep-dive search engine in Vivaldi for context-aware web browsing.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>9. Local Embedding Search</h3>
+            <p>Create a local vector database of your Apple Notes, queried via Ollama embeddings for semantic search.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">AI & LLMs</span>
+            <h3>10. AI Shell Generator</h3>
+            <p>Generate complex bash commands on the fly using a local LLM and paste them directly into iTerm2.</p>
+        </div>
+
+        <!-- Workspace Category -->
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>11. "Ultra-Wide Dev" Spencer Layout</h3>
+            <p>Spencer CLI script: iTerm2 left 25%, Ghostty middle 50%, Vivaldi right 25% on your 3840x1080 display.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>12. "Focus Research" Layout</h3>
+            <p>Spencer layout: Comet (Perplexity) fullscreen on the ultra-wide, Apple Notes on the Built-in Liquid Retina display.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>13. Automated Spencer Restore</h3>
+            <p>Map `spencer --restore "Dev Center" --launch-apps=true` to a global Raycast keyboard shortcut.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>14. Context Switching script</h3>
+            <p>Bash script using `spencer --update-active` before `spencer --restore "Gaming"` to seamlessly transition states.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>15. Spencer + App Intents</h3>
+            <p>Create an Apple Shortcut using App Intents to tell Siri: "Set up my coding environment," triggering Spencer CLI.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>16. Vivaldi Tiled Workspaces</h3>
+            <p>Combine Spencer window placement with Vivaldi's native tab tiling to view Atlas, Comet, and Docs simultaneously.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>17. "Laptop Only" Fallback</h3>
+            <p>A specific Spencer desktop layout tailored for the 2560x1664 screen when you disconnect from the ultra-wide monitor.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>18. Quick Hide Distractions</h3>
+            <p>Use Spencer's background window hiding feature to instantly minimize all non-essential apps during a pomodoro session.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>19. Layout: AI Control Center</h3>
+            <p>LM Studio, Ollama terminal logs, and ChatGPT Atlas precisely arranged across your dual display setup.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Workspace</span>
+            <h3>20. Spencer ⇧⌘R Muscle Memory</h3>
+            <p>Utilize Spencer's active workspace restore to snap accidentally moved windows back to their pixel-perfect positions.</p>
+        </div>
+
+        <!-- Terminal Category -->
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>21. Ghostty Metal Acceleration</h3>
+            <p>Leverage Ghostty's Metal rendering on the M4 GPU to process massive log files with zero frame drops.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>22. Terminal Ops Center Script</h3>
+            <p>Run your `launch-terminal-operations-center.applescript` via Raycast to instantly boot your custom environment.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>23. iTerm2 Python API Hooks</h3>
+            <p>Use iTerm2's Python API to change terminal background colors based on whether local AI models are currently inferencing.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>24. Custom Ghostty Shaders</h3>
+            <p>Implement custom Metal shaders in Ghostty for visual feedback when compiling code or running heavy tasks.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>25. Vivaldi to Terminal Pipe</h3>
+            <p>Raycast script to grab the current URL in Vivaldi and `curl` it directly inside a new Ghostty split pane.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>26. Local Model Auto-Updater</h3>
+            <p>Bash script running in iTerm2 to periodically ping the Ollama registry and pull updates for your saved models.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>27. Ghostty Markdown Viewer</h3>
+            <p>Read your `terminal-operations-center.md` directly inside Ghostty using a terminal-native markdown renderer.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>28. Resource Monitor Layout</h3>
+            <p>A dedicated Ghostty workspace showing `btm` (bottom) monitoring the M4's 8 cores and neural engine usage.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>29. Notes to Terminal</h3>
+            <p>AppleScript that takes a code block from Apple Notes and executes it in a sandboxed iTerm2 session.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Terminal</span>
+            <h3>30. Quick Launch Ghostty</h3>
+            <p>Map a global hotkey to drop down a Ghostty terminal from the top of the screen (Quake-style) for rapid commands.</p>
+        </div>
+
+        <!-- Apple Ecosystem -->
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>31. Apple Intelligence Writing Tools</h3>
+            <p>Use system-wide Apple Intelligence in Notes to rewrite technical documentation into layman's terms.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>32. Foundation Models App Intent</h3>
+            <p>Create an App Intent that utilizes Apple's Foundation Models to categorize images dropped into a specific folder.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>33. Siri Terminal Execution</h3>
+            <p>Secure App Intent: "Siri, deploy to staging," which triggers a specific shell script in your Ghostty Ops Center.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>34. Machine Learning CoreML Convert</h3>
+            <p>Use Apple's ML tools to convert HuggingFace models into CoreML format for extreme efficiency on the M4.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>35. Safari/Vivaldi Handoff</h3>
+            <p>Use iCloud tabs to seamlessly hand off research from ChatGPT Atlas on your iPhone to Vivaldi on the Mac.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>36. Spotlight + Apple Notes</h3>
+            <p>Leverage the deep integration of Apple Notes and Spotlight to instantly find AI-generated snippets.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>37. Focus Filters for Context</h3>
+            <p>Tie macOS Focus Modes to Spencer Pro CLI, changing your entire window layout when "Work Focus" turns on.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>38. App Intents for Local AI</h3>
+            <p>Expose Ollama's local generation capabilities to the Shortcuts app via custom App Intents.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>39. Apple Intelligence Image Playground</h3>
+            <p>Generate concept art for personal projects instantly using on-device Image Playground.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Apple Ecosystem</span>
+            <h3>40. Universal Clipboard Magic</h3>
+            <p>Copy a prompt on your iPhone, paste it into Ghostty on the Mac, process it locally, and copy the result back.</p>
+        </div>
+        
+        <!-- Mixed / Advanced Categories -->
+        <div class="card" data-category="apple">
+            <span class="tag">Advanced</span>
+            <h3>41. Raycast Window Management Fallback</h3>
+            <p>Use Raycast for quick, single-window snaps while letting Spencer handle complex multi-monitor workspace restores.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Advanced</span>
+            <h3>42. Automated Desktop Cleanup</h3>
+            <p>Bash script + Spencer: `spencer --update-active-desktop` then moves all loose desktop files to a "To Sort" folder.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">Advanced</span>
+            <h3>43. Vivaldi Web Panels for AI</h3>
+            <p>Dock ChatGPT Atlas and Comet as persistent side panels in Vivaldi for instant access without opening tabs.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Advanced</span>
+            <h3>44. Ghostty + App Intents</h3>
+            <p>Use the new macOS 26.6 App Intents API to allow Ghostty plugins to interact directly with system settings.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">Advanced</span>
+            <h3>45. Notes Context for Local Models</h3>
+            <p><strong>Do not open the Apple Notes SQLite DB.</strong> Safer idea: export or share notes via Shortcuts / AppleScript, then use that text as context for a local model. Raw DB access risks privacy exposure, locking, and corruption.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Advanced</span>
+            <h3>46. iTerm2 Badge Notifications</h3>
+            <p>Use iTerm2's badge feature to show the current active local LLM loaded in Ollama.</p>
+        </div>
+        <div class="card" data-category="workspace">
+            <span class="tag">Advanced</span>
+            <h3>47. Spencer "Zen" Mode</h3>
+            <p>A layout that maximizes Ghostty on the ultra-wide, hides the dock/menu bar, and sets system to Do Not Disturb.</p>
+        </div>
+        <div class="card" data-category="apple">
+            <span class="tag">Advanced</span>
+            <h3>48. Apple Intelligence Notification Summary</h3>
+            <p>Let the OS natively summarize long terminal build error logs pushed as system notifications.</p>
+        </div>
+        <div class="card" data-category="ai">
+            <span class="tag">Advanced</span>
+            <h3>49. Voice-Activated Local AI</h3>
+            <p>Shortcut: "Hey Siri, ask my local brain." Captures audio, transcribes locally, queries Ollama, and speaks the response.</p>
+        </div>
+        <div class="card" data-category="terminal">
+            <span class="tag">Advanced</span>
+            <h3>50. The Ultimate IDE</h3>
+            <p>Ghostty running Neovim, right next to Vivaldi (Atlas), managed by Spencer, powered by M4 Apple Silicon.</p>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            if (!card.querySelector('.status-badge')) {
+                const badge = document.createElement('span');
+                badge.className = 'status-badge';
+                badge.textContent = 'Idea · stub';
+                card.appendChild(badge);
+            }
+        });
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'fadeIn 0.5s ease forwards';
+                    } else {
+                        card.classList.add('hidden');
+                        card.style.animation = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
